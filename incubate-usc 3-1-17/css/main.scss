@@ -1,0 +1,534 @@
+$background-color: #EDEDED;
+
+@font-face {
+	font-family: din;
+	src: url('../font/din.ttf');
+}
+
+body {
+	background-color: $background-color;
+	width: 100%;
+	height: 100vh;
+}
+
+#maincont {
+	width: 100%;
+	height: 100%;
+
+}
+
+
+#loginbg {
+	width: 50%;
+	height: 100%;
+
+	float: left;
+
+	background: url("../img/tommy.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#logincont {
+	width: 50%;
+	height: 100%;
+	background-color: white;
+
+	float: right;
+
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+.navbar-default {
+	z-index: 100;
+	position: fixed;
+	margin-bottom: 0px;
+/*	background-color: rgba(128, 128, 128, 0.21);
+*/
+	background-color: transparent;
+	opacity: 1.0;
+	border-color: transparent;
+	height: 70px;
+	width: 100vw;
+
+	border-radius: 0px;
+
+}
+
+
+.navbar {
+	z-index: 100;
+	position: fixed;
+	margin-bottom: 0px;
+/*	background-color: rgba(128, 128, 128, 0.21);
+*/
+	background-color: transparent;
+	opacity: 1.0;
+	border-color: transparent;
+	height: 70px;
+	width: 100vw;
+
+	border-radius: 0px;
+
+	padding-top: 10px;
+
+}
+
+
+
+.navbar-brand {
+	padding: 5px 5px;
+}
+
+#logintxt {
+
+}
+
+#hero {
+	width: 100%;
+	height: 400px;
+	background: url("../img/campcenter.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+
+#homehead {
+	
+	background-color: $background-color;
+
+	padding-top: 0px;
+
+} 
+
+#searchcont {
+	width: 50%;
+	margin: auto;
+}
+
+#dropcont {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+}
+
+#homemain {
+
+	background-color: $background-color;
+	padding: 25px;
+
+
+	margin-top: 50px;
+	margin-bottom: 100px;
+	margin-left: 10px;
+	margin-right:10px;
+
+
+}
+
+
+.jobcont a {
+	height: 400px;
+	background-color: white;
+
+	border: grey 1px solid;
+
+	box-shadow: -10px 15px grey;
+
+	margin-bottom: 30px;
+
+	padding: 10px;
+
+	display: block;
+
+
+
+}
+
+#jobtitle {
+	font-size: 30px;
+	margin-left: 0px;
+	background-color: white;
+
+}
+
+#jobborder {
+	position: relative;
+	height: 305px;
+	top: 10px;
+	background-color: white;
+}
+
+#jobinfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+
+
+}
+
+#infotitle {
+	font-size: 30px;
+}
+
+
+#jobimg {
+	width: 100%;
+	height: 200px;
+	background: url('../img/facebook.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+
+#logo {
+	position: fixed;
+	left: 10px;
+	top: 10px;
+	height: 50px;
+}
+
+#footer {
+	width: 100%;
+	background-color: $background-color;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	margin-top: 10px;
+
+}
+
+#profhero {
+	width: 100%;
+	height: 400px;
+	background: url('../img/fighton.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#prof-comp-hero {
+	width: 100%;
+	height: 400px;
+	background: url('../img/fbart.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#profilemain {
+	width: 100%;
+	height: 1300px;
+}
+
+#profholder {
+	width: 70%;
+	height: 100%;
+	
+}
+
+#sidebar {
+
+	margin-top: 10px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+
+	
+	border: grey 1px solid;
+
+	box-shadow: -10px 15px grey;
+	
+	background-color: white;
+	padding-top: 30px;
+
+	height: 650px;
+	width: 300px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#comp-sidebar {
+
+	padding-top: 0px;
+	margin-top: 12px;
+
+	height: 800px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+
+.profcont {
+	margin: 10px;
+	width: 100%;
+	height: 400px;
+
+	background-color: white;
+	padding-top: 20px;
+	display: inline-block;
+
+
+	border: grey 1px solid;
+
+	box-shadow: 10px 15px grey;
+
+	margin-bottom: 30px;
+	margin-right: 30px;
+}
+
+
+.prof-comp-cont {
+
+	padding-top: 20px;
+	display: inline-block;
+
+	padding:10px;
+}
+
+#proftitle {
+	text-decoration-color: black;
+	background-color: white;
+	position: relative;
+	display: inline;
+	font-size: 20px;
+	width: 100px;
+	top: -23px;
+	left: 15px;
+}
+
+
+
+#profborder {
+	border-radius: 4px;
+	position: relative;
+	height: 305px;
+	top: 10px;
+}
+
+#comp-proftitle {
+	text-decoration-color: black;
+	background-color: white;
+	font-size: 20px;
+	text-align: center;
+	
+
+}
+
+#profborder-comp {
+	height: auto;
+}
+
+#profinfo {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
+#comp-profinfo {
+	height: auto;
+	display: flex;
+	flex-direction: column;
+
+}
+
+#proftitle {
+	font-size: 30px;
+}
+
+
+#profimg {
+	margin-left: 15px;
+	width: 300px;
+	height: 250px;
+	background: url('../img/tommy.jpeg');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#profhold {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: left;
+}
+
+.proftxt {
+	font-family: din;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 13px;
+	font-size: 18px;
+}
+
+#profhead {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	position: relative;
+	top: -55px;
+	left: 100px;
+	background-color: $background-color;
+
+	width: 300px;
+	text-align: center;
+}
+
+#footercont {
+	height: 200px;
+	width: 300px;
+	background-color: $background-color;
+
+}
+.foottitle {
+	color: white;
+}
+
+#sidefavs {
+}
+
+h1 {
+	font-family: din;
+	text-align: center;
+}
+
+
+
+.btn {
+	background-color: #a61e36;
+	color: white;
+	font-family: din;
+	margin-top: 10px;
+	width: 100%;
+}
+
+div > p {
+	font-family: din;
+	margin-top: 10px;
+}
+
+hr {
+	margin: 0;
+}
+
+a {
+	color: black;
+	font-family: din;
+}
+
+a:hover {
+	text-decoration: none;
+		color: black;
+		font-family: din;
+
+}
+
+#complogo {
+	background: url('../img/fblogo.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 50px;
+	width: 200px;
+	margin: auto;
+
+}
+
+
+#alumnisearch {
+	margin: auto;
+	margin-top: 15px;
+	width: 265px;
+	height: 400px;
+	border: 1px solid grey;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	overflow: scroll;
+}
+
+.newalumni {
+	z-index: 100;
+	height: 300px;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+#alumniimg {
+	background: url('../img/george.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	height: 130px;
+
+	width: 50%;
+	height: auto;
+	padding-top: 50%;
+	border-radius: 99px;
+	z-index: 90;
+
+}
+
+.margins {
+	margin: 10px;
+	margin-bottom: 30px;
+	background-color: white;
+	box-shadow: 10px 15px grey;
+	border: 1px solid grey;
+	padding: 10px;
+
+}
+
+#navimg {
+		background: url('../img/tommy.jpeg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	height: 20px;
+
+	width: 50%;
+	height: auto;
+	padding-top: 50%;
+	border-radius: 99px;
+
+	margin-top: 10px;
+
+}
+
+@media screen and (max-width: 805px) {
+	#navimg {
+		display: none;
+	}
+}
+
