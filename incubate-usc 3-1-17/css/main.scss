@@ -1,4 +1,5 @@
 $background-color: #EDEDED;
+$border-top: #990000 2px solid;
 
 @font-face {
 	font-family: din;
@@ -141,9 +142,9 @@ body {
 	height: 400px;
 	background-color: white;
 
-	border: grey 1px solid;
+	border-top: $border-top;
 
-	box-shadow: -10px 15px grey;
+	//box-shadow: -10px 15px grey;
 
 	margin-bottom: 30px;
 
@@ -510,7 +511,7 @@ a:hover {
 }
 
 #navimg {
-		background: url('../img/tommy.jpeg');
+	background: url('../img/tommy.jpeg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
