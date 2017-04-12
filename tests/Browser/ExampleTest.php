@@ -19,7 +19,7 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function ($browser) {
             $browser->visit('http://127.0.0.1:8000')
-                    ->assertSee('Welcome to Incubate USC');
+                    ->assertSee('Welcome');
         });
     }
     // public function test2()
