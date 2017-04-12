@@ -1,0 +1,46 @@
+body {
+	margin: 0px;
+	font-family: arial;
+}
+
+header {
+	float:left;
+	width: 100vw;
+	background-color: white;
+	height: 200px;
+}
+
+nav {	
+	width: 100%;
+	margin: auto;
+	background-color: rgba(0, 0, 0, 0.2);
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+article {
+	width: 100%;
+}
+
+.search {
+	margin:auto;
+	text-align: center;
+}
+
+.row {
+	 background-color:black;
+}
+
+.box {
+
+}
+
+.col-centered{
+    float: none;
+    margin: auto;
+    background-color: gray;
+    text-align: center;
+    display: block;
+}
