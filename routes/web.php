@@ -18,10 +18,6 @@ Route::get('home', function () {
     return view('home');
 });
 
-Route::get('hometest', function () {
-    return view('hometest');
-});
-
 Route::get('login', function () {
     return view('login');
 });
@@ -73,6 +69,7 @@ Route::get('nav', function (){
 Route::get('test1', function(){
     return View::make('test1');
 });
+Route::post('test3', 'MasterController@test2');
 
 Route::post('test2', 'MasterController@test');
 

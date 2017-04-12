@@ -15,9 +15,13 @@ class MasterController extends Controller{
 		return Redirect('home');
     }
 
-    public function test($variable)
+    public function test(Request $request)
     {
-
+    	return "here";
     }
 
+    public function test2(Request $request)
+    {
+    	return Redirect('confirmnewjob');
+    }
 }

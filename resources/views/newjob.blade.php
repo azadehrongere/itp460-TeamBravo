@@ -1,25 +1,3 @@
-<?php require (app_path().'/includes/connect.php');
-
-$sql_field = "SELECT * FROM field"; 
-$results_field = mysqli_query($conn, $sql_field);
-if(!$results_field){
-    exit("SQL Error: " . mysqli_error($conn));
-}
-
-$sql_size = "SELECT * FROM size"; 
-$results_size = mysqli_query($conn, $sql_size);
-if(!$results_size){
-    exit("SQL Error: " . mysqli_error($conn));
-}
-
-$sql_level = "SELECT * FROM level"; 
-$results_level = mysqli_query($conn, $sql_level);
-if(!$results_level){
-    exit("SQL Error: " . mysqli_error($conn));
-}
-
-?>
-
 @extends('layouts.master')
 
 @section('title', 'Page Title')
@@ -40,12 +18,13 @@ if(!$results_level){
 
 <div id="formContainer" style="padding-left:50px; padding-right:50px;">
 
-{{ Form::open(array('url' => 'confirmnewjob')) }}
+{{-- {{ Form::open(array('url' => 'confirmnewjob')) }} --}}
+<form id="jobForm" method="post" action="test3">
 
    <div class="col-md-5 col-sm-offset-1 col-xs-10">
       
   <label for="jobTitle">Job Title</label>
-    <input type="jobTitle" class="form-control" id="jobTitle" name="title">
+    <input type="jobTitle" class="form-control" id="jobTitle">
     <br>
 
     <label for="exampleInputFile">File input</label>
@@ -57,7 +36,7 @@ if(!$results_level){
 
   <div id="right" class="col-md-5 col-xs-10">
        <label for="exampleTextarea">Job Description</label>
-    <textarea class="form-control" id="exampleTextarea" rows="7" placeholder="Write the job summary, preferred majors, required experience, salary, etc. here" name="description"></textarea>
+    <textarea class="form-control" id="exampleTextarea" rows="7" placeholder="Write the job summary, preferred majors, required experience, salary, etc. here"></textarea>
     <br>
   <br><br>
   </div>
@@ -65,36 +44,41 @@ if(!$results_level){
 
    <div class="col-md-5 col-sm-offset-1 col-xs-10">
       <label for="locationSelect">Location</label>
-    <input type="jobLocation" class="form-control" id="jobLocation" name="location">
-
+    <select class="form-control" id="locationSelect">
+      <option>Los Angeles</option>
+      <option>Santa Monica</option>
+      <option>Culver City</option>
+      <option>Hollywood</option>
+      <option>Beverly Hills</option>
+    </select>
     <br>
       <label for="jobLevel">Job Level</label>
-    <select class="form-control" id="jobLevel" name="jobID">
-            <?php
-            while ($row = mysqli_fetch_array ($results_level)){
-                echo "<option value='" . $row['levelID'] . "'>" . $row['level'] . "</option>";}
-
-            ?>
+    <select class="form-control" id="jobLevel">
+      <option>Entry Level</option>
+      <option>Mid-Level</option>
+      <option>Senior Level</option>
+      <option>Internship</option>
+      <option>Part-time</option>
     </select>
   </div>
  <br>
 <div id="right" class="col-md-5 col-xs-10">
        <label for="companySize">Company Size</label>
-    <select class="form-control" id="companySize" name="sizeID">
-            <?php
-            while ($row = mysqli_fetch_array ($results_size)){
-                echo "<option value='" . $row['sizeID'] . "'>" . $row['size'] . " employees</option>";}
-
-            ?>
+    <select class="form-control" id="companySize">
+      <option>1-100 employees</option>
+      <option>100-1,000 employees</option>
+      <option>1,0000-5,0000 employees</option>
+      <option>5,000-10,000 employees</option>
+      <option>10,000+ employees</option>
     </select>
     <br>
     <label for="field">Field</label>
-    <select class="form-control" id="field" name="fieldID">
-            <?php
-            while ($row = mysqli_fetch_array ($results_field)){
-                echo "<option value='" . $row['fieldID'] . "'>" . $row['field'] . "</option>";}
-
-            ?>
+    <select class="form-control" id="field">
+      <option>Engineering</option>
+      <option>Marketing</option>
+      <option>Finance</option>
+      <option>Business</option>
+      <option>Technology</option>
     </select> 
   <br><br><br>
   </div>
@@ -105,7 +89,9 @@ if(!$results_level){
  
  <div style="width:30%; margin: auto">
   <button type="submit" form="jobForm" class="btn btn-primary" value="Submit">Submit</button>
-{{ Form::close() }}
+
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+</form>
 </div>
 
 
