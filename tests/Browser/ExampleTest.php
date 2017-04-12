@@ -22,7 +22,6 @@ class ExampleTest extends DuskTestCase
                     ->assertSee('Welcome to Incubate USC');
         });
     }
-
     // public function test2()
     // {
     //     $this->browse(function ($browser) {
