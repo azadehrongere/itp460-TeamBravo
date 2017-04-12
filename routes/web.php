@@ -69,9 +69,7 @@ Route::get('nav', function (){
 Route::get('test1', function(){
     return View::make('test1');
 });
-Route::post('test3', 'MasterController@test2');
-
-Route::post('test2', 'MasterController@test');
+Route::post('submitnewjob', 'MasterController@SubmitNewJob');
 
 Route::get('linkedinAuth/{firstName}/{lastName}/{headline}', 'MasterController@SuccessfulLogin');
 

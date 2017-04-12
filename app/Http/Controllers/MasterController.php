@@ -15,9 +15,10 @@ class MasterController extends Controller{
 		return Redirect('home');
     }
 
-    public function test(Request $request)
+    public function SubmitNewJob(Request $request)
     {
-    	return "here";
+    	$data = $request->all();
+    	return $data;
     }
 
     public function test2(Request $request)

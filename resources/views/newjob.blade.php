@@ -19,16 +19,16 @@
 <div id="formContainer" style="padding-left:50px; padding-right:50px;">
 
 {{-- {{ Form::open(array('url' => 'confirmnewjob')) }} --}}
-<form id="jobForm" method="post" action="test3">
+<form id="jobForm" method="post" action="submitnewjob">
 
    <div class="col-md-5 col-sm-offset-1 col-xs-10">
       
   <label for="jobTitle">Job Title</label>
-    <input type="jobTitle" class="form-control" id="jobTitle">
+    <input type="text" class="form-control" name="jobTitle" id="jobTitle">
     <br>
 
     <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <input type="file" class="form-control-file" id="exampleInputFile" name="jobPicture" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">Add a picture of the posted job here! This can be an office space photo or team picture.</small>
 
     <br>
@@ -36,7 +36,7 @@
 
   <div id="right" class="col-md-5 col-xs-10">
        <label for="exampleTextarea">Job Description</label>
-    <textarea class="form-control" id="exampleTextarea" rows="7" placeholder="Write the job summary, preferred majors, required experience, salary, etc. here"></textarea>
+    <textarea class="form-control" name="Description" id="exampleTextarea" rows="7" placeholder="Write the job summary, preferred majors, required experience, salary, etc. here"></textarea>
     <br>
   <br><br>
   </div>
@@ -44,41 +44,35 @@
 
    <div class="col-md-5 col-sm-offset-1 col-xs-10">
       <label for="locationSelect">Location</label>
-    <select class="form-control" id="locationSelect">
-      <option>Los Angeles</option>
-      <option>Santa Monica</option>
-      <option>Culver City</option>
-      <option>Hollywood</option>
-      <option>Beverly Hills</option>
-    </select>
+    <input type="text" class="form-control" name="location" id="location">
     <br>
       <label for="jobLevel">Job Level</label>
-    <select class="form-control" id="jobLevel">
-      <option>Entry Level</option>
-      <option>Mid-Level</option>
-      <option>Senior Level</option>
-      <option>Internship</option>
-      <option>Part-time</option>
+    <select class="form-control" name="jobLevel" id="jobLevel">
+      <option value="Entry Level">Entry Level</option>
+      <option value="Mid-Level">Mid-Level</option>
+      <option value="Senior Level">Senior Level</option>
+      <option value="Internship">Internship</option>
+      <option value="Part-time">Part-time</option>
     </select>
   </div>
  <br>
 <div id="right" class="col-md-5 col-xs-10">
        <label for="companySize">Company Size</label>
-    <select class="form-control" id="companySize">
-      <option>1-100 employees</option>
-      <option>100-1,000 employees</option>
-      <option>1,0000-5,0000 employees</option>
-      <option>5,000-10,000 employees</option>
-      <option>10,000+ employees</option>
+    <select class="form-control" name="size" id="companySize">
+      <option value="100">1-100 employees</option>
+      <option value="1000">100-1,000 employees</option>
+      <option value="5000">1,0000-5,0000 employees</option>
+      <option value="10000">5,000-10,000 employees</option>
+      <option value="11000">10,000+ employees</option>
     </select>
     <br>
     <label for="field">Field</label>
-    <select class="form-control" id="field">
-      <option>Engineering</option>
-      <option>Marketing</option>
-      <option>Finance</option>
-      <option>Business</option>
-      <option>Technology</option>
+    <select class="form-control" name="category" id="field">
+      <option value="Engineering">Engineering</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Finance">Finance</option>
+      <option value="Business">Business</option>
+      <option value="Technology">Technology</option>
     </select> 
   <br><br><br>
   </div>
