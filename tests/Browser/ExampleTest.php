@@ -18,15 +18,22 @@ class ExampleTest extends DuskTestCase
     public function test1()
     {
         $this->browse(function ($browser) {
-            $browser->visit('http://127.0.0.1:8000')
-                    ->assertSee('Welcome');
+            $browser->visit('http://127.0.0.1:8000/home')
+                    ->assertSee('Welcome to Incubate USC');
         });
     }
-    // public function test2()
+    public function test2()
+    {
+        $this->browse(function ($browser) {
+            $browser->click('#logocont')
+                    ->assertPathIs('/home');
+        });
+    }
+    // public function test3()
     // {
     //     $this->browse(function ($browser) {
-    //         $browser->clickLink($JOBS)
-    //                 ->assertPathIs('/profile');
+    //         $browser->click('#logocont')
+    //                 ->assertPathIs('/home');
     //     });
     // }
 }
