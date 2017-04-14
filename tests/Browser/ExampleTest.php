@@ -15,6 +15,16 @@ class ExampleTest extends DuskTestCase
      * @return void
      */
     
+    public function url()
+    {
+        return '/home';
+    }
+
+    public function assert(Browser $browser)
+    {
+        $browser->assertPathIs($this->url());
+    }
+
     public function test1()
     {
         $this->browse(function ($browser) {
@@ -25,15 +35,17 @@ class ExampleTest extends DuskTestCase
     public function test2()
     {
         $this->browse(function ($browser) {
-            $browser->click('#logocont')
+            $browser->visit('http://127.0.0.1:8000/company-profile')
+                    ->click('#logocont')
                     ->assertPathIs('/home');
         });
     }
-    // public function test3()
-    // {
-    //     $this->browse(function ($browser) {
-    //         $browser->click('#logocont')
-    //                 ->assertPathIs('/home');
-    //     });
-    // }
+    public function test3()
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('http://127.0.0.1:8000/profile')
+                    ->waitFor('#editProfile')
+                    ->assertSee('#editProfile', 'Edit Profile');
+        });
+    }
 }

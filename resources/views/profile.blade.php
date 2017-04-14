@@ -48,7 +48,7 @@
 <div id="comp-sidebar" class="col-xs-12 col-sm-4 col-sm-pull-8" style:"background: white;">
     <div class="margins">
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 400px;">
+  <button class="btn btn-default dropdown-toggle" type="button" id="editProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 400px;">
     Edit Profile
     <span class="caret"></span>
   </button>
