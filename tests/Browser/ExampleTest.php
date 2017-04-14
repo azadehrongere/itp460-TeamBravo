@@ -44,8 +44,27 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function ($browser) {
             $browser->visit('http://127.0.0.1:8000/profile')
-                    ->waitFor('#editProfile')
-                    ->assertSee('#editProfile', 'Edit Profile');
+                    //->waitFor('#editProfile')
+                    ->assertSeeIn('#editProfile', 'Edit Profile');
+        });
+    }
+    public function test4()
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('http://127.0.0.1:8000/newjob')
+                    ->assertVisible('#jobLevel')
+                    ->assertVisible('#companySize')
+                    ->assertVisible('#field');
+        });
+    }
+    public function test5()
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('http://127.0.0.1:8000/newcompany')
+                    ->assertVisible('#companyDescription')
+                    ->assertVisible('#companyName')
+                    ->assertVisible('#contactName')
+                    ->assertVisible('#contactEmail');
         });
     }
 }
