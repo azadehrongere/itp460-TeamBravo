@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSizeTable extends Migration
+class CreateCoverPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateSizeTable extends Migration
      */
     public function up()
     {
-        Schema::create('size', function (Blueprint $table) {
-            $table->increments('sizeID');
-            $table->string('size');
+        //
+        Schema::create('coverPhotos', function (Blueprint $table) {
+            $table->increments('coverPhotosID');
+            $table->string('coverPhotoURL');
             $table->timestamps();
         });
     }
@@ -27,6 +28,7 @@ class CreateSizeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('size');
+        //
+        Schema::dropIfExists('coverPhotos');
     }
 }

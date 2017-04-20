@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFavoritesTable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         //
-        Schema::create('favorites', function (Blueprint $table) {
-            $table->increments('favoritesID');
+        Schema::create('projects', function (Blueprint $table) {
+            $table->increments('projectsID');
             $table->integer('foreign_usersID')->unsigned();
             $table->foreign('foreign_usersID')->references('id')->on('users');
             $table->timestamps();
@@ -30,9 +30,9 @@ class CreateFavoritesTable extends Migration
     public function down()
     {
         //
-        Schema::table('favorites', function(Blueprint $table){
+        Schema::table('projects', function(Blueprint $table){
             $table->dropForeign(['foreign_usersID']);
         });
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('projects');
     }
 }

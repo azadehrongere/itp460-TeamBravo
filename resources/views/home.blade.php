@@ -24,16 +24,36 @@ $search="";
 
 $search = $_GET['search'];
 $sql=$sql . " AND (title LIKE '%" . $search . "%' OR company LIKE '%" . $search . "%' OR location LIKE '%" . $search . "%')" ;
+}
+
+if(empty($_GET['levelID'])) {
+$levelID="";
+} else {
+$levelID = $_GET['levelID'];
+$sql=$sql . " AND job.foreign_levelID = " . $levelID;
+}
+
+if(empty($_GET['sizeID'])) {
+$sizeID="";
+} else {
+$sizeID = $_GET['sizeID'];
+$sql=$sql . " AND job.foreign_sizeID = " . $sizeID;
+}
+
+if(empty($_GET['fieldID'])) {
+$fieldID="";
+} else {
+$fieldID = $_GET['fieldID'];
+$sql=$sql . " AND job.foreign_fieldID = " . $fieldID;
+}
 
 $results = mysqli_query($conn, $sql);
 if(!$results){
     exit("SQL Error: " . mysqli_error($conn));
 }
 
-}
-
-echo $sql;
-echo "<br> I'm not sure why the results are getting duplicated.. there should only be 2 :( :( -matt";
+// echo $sql;
+// echo "<br> I'm not sure why the results are getting duplicated.. there should only be 2 :( :( -matt";
 
 /*
 @$location = $_GET['location'];
@@ -101,7 +121,7 @@ if(!$results_location){
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <?php while ($row_level = mysqli_fetch_array($results_level)): ?>
 
-      <li><a><?=$row_level['level']?></a></li>
+      <li><a onclick='level(<?=$row_level['levelID']?>)'><?=$row_level['level']?></a></li>
 
     <?php endwhile; ?>
   </ul>
@@ -115,7 +135,7 @@ if(!$results_location){
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <?php while ($row_size = mysqli_fetch_array($results_size)): ?>
 
-      <li><a><?=$row_size['size']?></a></li>
+      <li><a onclick='size(<?=$row_size['sizeID']?>)'><?=$row_size['size']?></a></li>
 
     <?php endwhile; ?>
   </ul>
@@ -129,7 +149,7 @@ if(!$results_location){
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <?php while ($row_field = mysqli_fetch_array($results_field)): ?>
 
-      <li><a><?=$row_field['field']?></a></li>
+      <li><a onclick='field(<?=$row_field['fieldID']?>)'><?=$row_field['field']?></a></li>
 
     <?php endwhile; ?>
   </ul>

@@ -21,8 +21,19 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('headline');
             $table->string('profilePic');
+
+            $table->integer('foreign_coverPhoto')->unsigned();
+            $table->foreign('foreign_coverPhoto')->references('coverPhotosID')->on('coverPhotos');
+
+            $table->boolean('companyOrNot');
+            
             $table->rememberToken();
             $table->timestamps();
+
+
+// looks like we might need 30+ columns for this... like 5 columns for each experience? check the google doc -matt
+
+
         });
     }
 

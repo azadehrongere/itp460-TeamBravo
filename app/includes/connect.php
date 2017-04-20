@@ -12,10 +12,12 @@ if(mysqli_connect_errno()){
 }
 
 // 2. Generate & Submit SQL
-$sql = "SELECT DISTINCT *
+$sql = "SELECT *
 		FROM job, company, field, level, size
 		WHERE job.foreign_fieldID = field.fieldID
-		AND job.foreign_companyID = company.companyID";
+		AND job.foreign_companyID = company.companyID
+		AND job.foreign_levelID = level.levelID
+		AND job.foreign_sizeID = size.sizeID";
 
 $results = mysqli_query($conn, $sql);
 if(!$results){

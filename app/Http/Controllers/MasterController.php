@@ -18,7 +18,8 @@ class MasterController extends Controller{
     public function SubmitNewJob(Request $request)
     {
     	$data = $request->all();
-    	return $data;
+        return Redirect('confirmnewjob');
+    	//return $data;
     }
 
     public function test2(Request $request)

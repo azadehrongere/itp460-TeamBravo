@@ -17,7 +17,6 @@ class CreateCompanyTable extends Migration
             $table->increments('companyID');
             $table->string('company');
             $table->string('background');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

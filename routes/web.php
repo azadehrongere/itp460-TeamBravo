@@ -71,6 +71,10 @@ Route::get('test1', function(){
 });
 Route::post('submitnewjob', 'MasterController@SubmitNewJob');
 
+Route::get('newstudent', function(){
+    return View::make('newstudent');
+});
+
 Route::get('linkedinAuth/{firstName}/{lastName}/{headline}', 'MasterController@SuccessfulLogin');
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSizeTable extends Migration
+class CreateJobTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateSizeTable extends Migration
      */
     public function up()
     {
-        Schema::create('size', function (Blueprint $table) {
-            $table->increments('sizeID');
-            $table->string('size');
+        //
+        Schema::create('jobType', function (Blueprint $table) {
+            $table->increments('jobTypeID');
+            $table->string('jobType');
             $table->timestamps();
         });
     }
@@ -27,6 +28,7 @@ class CreateSizeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('size');
+        //
+        Schema::dropIfExists('jobType');
     }
 }

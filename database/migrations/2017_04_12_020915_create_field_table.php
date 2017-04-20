@@ -16,7 +16,6 @@ class CreateFieldTable extends Migration
         Schema::create('field', function (Blueprint $table) {
             $table->increments('fieldID');
             $table->string('field');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
