@@ -1,3 +1,6 @@
+<?php include_once (app_path().'/includes/analyticstracking.php');
+
+?>
 
 @extends('layouts.master')
 

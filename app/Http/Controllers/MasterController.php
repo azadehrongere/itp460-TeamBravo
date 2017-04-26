@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Illuminate\Http\File;
+use Intervention\Image\ImageManager;
 
 class MasterController extends Controller{
 
@@ -15,15 +18,12 @@ class MasterController extends Controller{
 		return Redirect('home');
     }
 
-    public function SubmitNewJob(Request $request)
-    {
-    	$data = $request->all();
-        return Redirect('confirmnewjob');
-    	//return $data;
-    }
-
     public function test2(Request $request)
-    {
-    	return Redirect('confirmnewjob');
+    {      
+        $path = storage_path('app/public/memories.jpg');
+        $img = Image::make($path);
+        $image = $img->stream();
+        Storage::disk('s3')->put('images/test', $image->__toString());
+    	return $img->response();
     }
 }

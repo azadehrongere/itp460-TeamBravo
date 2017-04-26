@@ -1,3 +1,7 @@
+<?php include_once (app_path().'/includes/analyticstracking.php');
+
+?>
+
 @extends('layouts.master')
 
 @section('title', 'New Company')
@@ -15,6 +19,10 @@
 
 </div>
 
+<div class="container-fluid row" style="text-align: center; color: #A21010; font-size: 250%; padding-top: 20px;">
+  <strong>Add your Company!</strong>
+</div>
+
 <div id="startchange"></div>
 <br><br>
 
@@ -26,13 +34,13 @@
     <!-- <div id="left" style="margin-left:100px; width:570PX;"> -->
   <div class="col-md-5 col-sm-offset-1 col-xs-10">
       <label for="companyName">Company Name</label>
-      <input type="companyName" class="form-control" id="companyName" style="width:100%">
+      <input type="text" name="companyName" class="form-control" id="companyName" style="width:100%" required>
     <br>
       <label for="contactName">Contact Name</label>
-      <input type="contactName" class="form-control" id="contactName" style="width:100%">
+      <input text="text" name="contactName" class="form-control" id="contactName" style="width:100%" required>
     <br>
       <label for="contactEmail">Contact Email</label>
-      <input type="contactEmail" class="form-control" id="contactEmail" style="width:100%">
+      <input type="email" name="contactEmail" class="form-control" id="contactEmail" style="width:100%" required>
     <br>
   </div>
 
@@ -41,10 +49,10 @@
    <!-- <div id="right" style="margin-right:100px; position:absolute;width:570px;right:0;top:0;"> -->
   <div id="right" class="col-md-5 col-xs-10">
       <label for="">Password</label>
-      <input type="password" style="width:100%" class="form-control" id="password" placeholder="Enter your password.">
+      <input type="password" style="width:100%" class="form-control" id="password" placeholder="Enter your password." required>
     <br>
       <label for="">Confirm Password</label>
-      <input type="password" style="width:100%" class="form-control" id="confirmPassword" placeholder="Confirm your password.">
+      <input type="password" style="width:100%" class="form-control" id="confirmPassword" placeholder="Confirm your password." required>
     <br>
   </div>
 

@@ -21,14 +21,23 @@
     <hr>
 
       <p>We're here on campus weekdays and for big events on the weekend.</p>
+      <p style="float:left;">Monday-Friday</p>
+      <p style="float:right;">9am to Late</p>
+      <div style="clear:both;">
+      <p style="float:left;">Saturday</p>
+      <p style="float:right;"><a href="http://incubateusc.wpengine.com/events/" style="color: #fff;">See Events Calendar</a></p>
+      <div style="clear:both;">
+      <p style="float:left;">Sunday</p>
+      <p style="float:right;"><a href="http://incubateusc.wpengine.com/events/" style="color: #fff;">See Events Calendar</a></p>
+      <div style="clear:both;">
     </div>
 
-    <div class="col-lg-3 col-md-5 col-sm-12" id="footercont">
+    <!--<div class="col-lg-3 col-md-5 col-sm-12" id="footercont">
       <P class="foottitle">INCUBATE USC NEWSLETTER</P>
     <hr>
 
       <p>Never Miss Another Event on Campus:</p>
-    </div>
+    </div>-->
 
   </div>
 </div>

@@ -69,7 +69,20 @@ Route::get('nav', function (){
 Route::get('test1', function(){
     return View::make('test1');
 });
-Route::post('submitnewjob', 'MasterController@SubmitNewJob');
+
+Route::get('phpinfo', function(){
+    return phpinfo();
+});
+
+Route::get('studentsearch', function(){
+    return studentsearch();
+});
+
+Route::get('test2', 'MasterController@test2');
+
+Route::post('confirmnewjob', 'NewController@ConfirmNewJob');
+
+Route::post('submitnewjob', 'NewController@SubmitNewJob');
 
 Route::get('newstudent', function(){
     return View::make('newstudent');

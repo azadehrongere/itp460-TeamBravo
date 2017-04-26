@@ -1,88 +1,88 @@
-<?php require (app_path().'/includes/connect.php');
+<?php require (app_path().'/includes/studentsearch.php');
 
 include_once (app_path().'/includes/analyticstracking.php');
 
 // $sql=$sql . " AND users.companyOrNot = 1";
 
-$sql_field = "SELECT * FROM field"; 
-$results_field = mysqli_query($conn, $sql_field);
-if(!$results_field){
-    exit("SQL Error: " . mysqli_error($conn));
-}
+// $sql_field = "SELECT * FROM field"; 
+// $results_field = mysqli_query($conn, $sql_field);
+// if(!$results_field){
+//     exit("SQL Error: " . mysqli_error($conn));
+// }
 
-$sql_size = "SELECT * FROM size"; 
-$results_size = mysqli_query($conn, $sql_size);
-if(!$results_size){
-    exit("SQL Error: " . mysqli_error($conn));
-}
+// $sql_size = "SELECT * FROM size"; 
+// $results_size = mysqli_query($conn, $sql_size);
+// if(!$results_size){
+//     exit("SQL Error: " . mysqli_error($conn));
+// }
 
-$sql_level = "SELECT * FROM level"; 
-$results_level = mysqli_query($conn, $sql_level);
-if(!$results_level){
-    exit("SQL Error: " . mysqli_error($conn));
-}
+// $sql_level = "SELECT * FROM level"; 
+// $results_level = mysqli_query($conn, $sql_level);
+// if(!$results_level){
+//     exit("SQL Error: " . mysqli_error($conn));
+// }
 
-if(empty($_GET['search'])) {
-$search="";
-} else {
+// if(empty($_GET['search'])) {
+// $search="";
+// } else {
 
-$search = $_GET['search'];
-$sql=$sql . " AND (title LIKE '%" . $search . "%' OR name LIKE '%" . $search . "%' OR location LIKE '%" . $search . "%')" ;
-}
+// $search = $_GET['search'];
+// $sql=$sql . " AND (title LIKE '%" . $search . "%' OR name LIKE '%" . $search . "%' OR location LIKE '%" . $search . "%')" ;
+// }
 
-if(empty($_GET['levelID'])) {
-$levelID="";
-} else {
-$levelID = $_GET['levelID'];
-$sql=$sql . " AND job.foreign_levelID = " . $levelID;
-}
+// if(empty($_GET['levelID'])) {
+// $levelID="";
+// } else {
+// $levelID = $_GET['levelID'];
+// $sql=$sql . " AND job.foreign_levelID = " . $levelID;
+// }
 
-if(empty($_GET['sizeID'])) {
-$sizeID="";
-} else {
-$sizeID = $_GET['sizeID'];
-$sql=$sql . " AND job.foreign_sizeID = " . $sizeID;
-}
+// if(empty($_GET['sizeID'])) {
+// $sizeID="";
+// } else {
+// $sizeID = $_GET['sizeID'];
+// $sql=$sql . " AND job.foreign_sizeID = " . $sizeID;
+// }
 
-if(empty($_GET['fieldID'])) {
-$fieldID="";
-} else {
-$fieldID = $_GET['fieldID'];
-$sql=$sql . " AND job.foreign_fieldID = " . $fieldID;
-}
+// if(empty($_GET['fieldID'])) {
+// $fieldID="";
+// } else {
+// $fieldID = $_GET['fieldID'];
+// $sql=$sql . " AND job.foreign_fieldID = " . $fieldID;
+// }
 
-$results = mysqli_query($conn, $sql);
-if(!$results){
-    exit("SQL Error: " . mysqli_error($conn));
-}
+// $results = mysqli_query($conn, $sql);
+// if(!$results){
+//     exit("SQL Error: " . mysqli_error($conn));
+// }
 
-$results_per_page = 12;
-if(!empty($_GET['page'])) {
-  $page_num = $_GET['page'];
-}
+// $results_per_page = 12;
+// if(!empty($_GET['page'])) {
+//   $page_num = $_GET['page'];
+// }
 
-$num_results = mysqli_num_rows($results);
-$first_page = 1;
-$last_page = ceil($num_results / $results_per_page);
-# of pages = Ceiling of: Total # of results / # of results per page
+// $num_results = mysqli_num_rows($results);
+// $first_page = 1;
+// $last_page = ceil($num_results / $results_per_page);
+// # of pages = Ceiling of: Total # of results / # of results per page
 
-if(empty($page_num)){
-    $page_num = $first_page;
-} else {
-    if($page_num < $first_page){
-        $page_num = $first_page;
-    } elseif($page_num > $last_page){
-        $page_num = $last_page;
-    }
-}
+// if(empty($page_num)){
+//     $page_num = $first_page;
+// } else {
+//     if($page_num < $first_page){
+//         $page_num = $first_page;
+//     } elseif($page_num > $last_page){
+//         $page_num = $last_page;
+//     }
+// }
 
-$start_index = ($page_num - 1) * $results_per_page;
-$sql = $sql . " LIMIT $start_index, $results_per_page";
+// $start_index = ($page_num - 1) * $results_per_page;
+// $sql = $sql . " LIMIT $start_index, $results_per_page";
 
-$results = mysqli_query($conn, $sql);
-if(!$results){
-    exit("SQL Error: " . mysqli_error($conn));
-}
+// $results = mysqli_query($conn, $sql);
+// if(!$results){
+//     exit("SQL Error: " . mysqli_error($conn));
+// }
 
 
 /*
@@ -148,63 +148,52 @@ if(!$results_location){
 <div class="dropdown col-md-offset-3 col-md-2 col-xs-4">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownLevel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
-    Job Level
+    Major
   
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <?php while ($row_level = mysqli_fetch_array($results_level)): ?>
+{{--     <?php while ($row_level = mysqli_fetch_array($results_level)): ?>
 
       <li><a onclick="level(<?=$row_level['levelID']?>)" class="pointer"><?=$row_level['level']?></a></li>
 
-    <?php endwhile; ?>
+    <?php endwhile; ?> --}}
   </ul>
 </div>
 
 <div class="dropdown col-md-2 col-xs-4">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Company Size
+    Graduating Semester
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <?php while ($row_size = mysqli_fetch_array($results_size)): ?>
+{{--     <?php while ($row_size = mysqli_fetch_array($results_size)): ?>
 
       <li><a onclick='size(<?=$row_size['sizeID']?>)' class="pointer"><?=$row_size['size']?></a></li>
 
-    <?php endwhile; ?>
+    <?php endwhile; ?> --}}
   </ul>
 </div>
 
-<div class="dropdown col-md-2 col-xs-4">
+{{-- <div class="dropdown col-md-2 col-xs-4">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownField" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Field of interest
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <?php while ($row_field = mysqli_fetch_array($results_field)): ?>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> --}}
+{{--     <?php while ($row_field = mysqli_fetch_array($results_field)): ?>
 
       <li><a onclick='field(<?=$row_field['fieldID']?>)' class="pointer"><?=$row_field['field']?></a></li>
 
-    <?php endwhile; ?>
-  </ul>
+    <?php endwhile; ?> --}}
+{{--   </ul>
 
-</div>
+</div> --}}
 
   </div>
   </div>
 
 </div>
-
-
-<script type="text/javascript">
-  function diffImage(img) 
-{
-   if(img.src.match(/fighton_yellow/)) img.src = "../img/fighton_red.png";
-   else img.src = "../img/fighton_yellow.png";
-}
-
-</script>
-
 
 <hr>
 
@@ -213,30 +202,29 @@ if(!$results_location){
 <div class="col-sm-12 col-md-10 col-md-offset-1">
   <div class="row">
 
-  <?php while ($row = mysqli_fetch_array($results)): ?>
+ {{--  <?php while ($row = mysqli_fetch_array($results)): ?> --}}
 
   <div class="col-lg-offset-0 col-lg-4 col-md-5 col-sm-12 col-xs-12">
   <div class="jobcont">
-      <div id="jobtitle"><?=$row['name']?></div>
+      <div id="jobtitle">{{-- <?=$row['name']?> --}}</div>
       <hr>
-        <a  href="jobs?jobID=<?=$row['jobID']?>">
+        <a  href="{{-- jobs?jobID=<?=$row['jobID']?> --}}">
     <div id="jobinfo">
-      <div id="infotitle"><?=$row['title']?></div>
-      <div id="infolocation"><?=$row['location']?></div>
+      <div id="infotitle">{{-- <?=$row['title']?> --}}</div>
+      <div id="infolocation">{{-- <?=$row['location']?> --}}</div>
     </div>
     <div id="jobimg"></div>    </a>
-    <img src="../img/fighton_red.png" id="image1" style ="margin-top: 10px" align="right" class ="pointer" height="40" width="40" onclick=diffImage(this)></img>
 
     </div>
   </div>
 
-  <?php endwhile; ?>
+ {{--  <?php endwhile; ?> --}}
 
   </div>
 
   <div class="row">
 
-<?php
+{{-- <?php
 
 if($num_results > 12) {
 
@@ -273,7 +261,7 @@ if($num_results > 12) {
 echo '</ul>';
 
 }
-?>
+?> --}}
 
   </div>
 

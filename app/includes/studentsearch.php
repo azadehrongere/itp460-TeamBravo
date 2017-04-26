@@ -13,11 +13,8 @@ if(mysqli_connect_errno()){
 
 // 2. Generate & Submit SQL
 $sql = "SELECT *
-		FROM job, users, field, level, size
-		WHERE job.foreign_fieldID = field.fieldID
-		AND job.foreign_companyID = users.id
-		AND job.foreign_levelID = level.levelID
-		AND job.foreign_sizeID = size.sizeID";
+		FROM users, major
+		WHERE users.companyOrNot = 0";
 
 $results = mysqli_query($conn, $sql);
 if(!$results){

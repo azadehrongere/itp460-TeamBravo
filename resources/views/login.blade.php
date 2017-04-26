@@ -1,7 +1,11 @@
+<?php include_once (app_path().'/includes/analyticstracking.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Incubate USC | Login</title>
+	<title>Incubate USC - Login</title>
 </head>
 
 <script

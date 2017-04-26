@@ -22,10 +22,14 @@ class CreateUsersTable extends Migration
             $table->string('headline');
             $table->string('profilePic');
 
-            $table->integer('foreign_coverPhoto')->unsigned();
-            $table->foreign('foreign_coverPhoto')->references('coverPhotosID')->on('coverPhotos');
+            $table->string('studentDegree');
+
+            $table->text('companyDescription');
+
+            
 
             $table->boolean('companyOrNot');
+            $table->integer('jobsCreated');
             
             $table->rememberToken();
             $table->timestamps();
