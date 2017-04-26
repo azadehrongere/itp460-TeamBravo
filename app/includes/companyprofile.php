@@ -14,7 +14,7 @@ if(mysqli_connect_errno()){
 // 2. Generate & Submit SQL
 $sql = "SELECT *
 		FROM users
-		WHERE companyOrNot = 0";
+		WHERE companyOrNot = 1";
 
 $results = mysqli_query($conn, $sql);
 if(!$results){

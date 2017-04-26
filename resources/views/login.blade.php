@@ -38,10 +38,17 @@
 
     // Handle the successful return from the API call
     function onSuccess(data) {
-    console.log(data);
-    url = "linkedinAuth/" + data['firstName'] +"/"+ data['lastname'] +"/"+ data['headline'];
-    console.log(url)
-    window.location.replace(url);
+        console.log(data);
+        personalURL = data['siteStandardProfileRequest']['url'];
+        personalURL = personalURL.split('?');
+        personalURL = personalURL[1];
+        personalURL = personalURL.split('&');
+        personalURL = personalURL[0].split('=');
+        personalURL =encodeURIComponent(personalURL[1]);
+        console.log("personal URL = ", personalURL);
+        url = "linkedinAuth/" + data['firstName'] +"/"+ data['lastName'] +"/"+ data['headline'] +"/" + 
+        personalURL;
+        window.location.replace(url);
     // method = "post"; // Set method to post by default if not specified.
 
     // // The rest of this code assumes you are not using a library.

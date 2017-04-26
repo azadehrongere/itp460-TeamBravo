@@ -1,5 +1,32 @@
 <?php include_once (app_path().'/includes/analyticstracking.php');
 
+require (app_path().'/includes/companyprofile.php');
+
+if(empty($_GET['profileID'])) {
+$profileID = '1';
+} else {
+$profileID = $_GET['profileID'];
+$sql=$sql . " AND users.id =" . $profileID;
+}
+
+$results = mysqli_query($conn, $sql);
+if(!$results){
+    exit("SQL Error: " . mysqli_error($conn));
+}
+
+$company = mysqli_fetch_array($results);
+
+$sql_jobs = "SELECT *
+    FROM job, users
+    WHERE users.companyOrNot = 1
+    AND job.foreign_companyID = users.id
+    AND job.foreign_companyID =" . $profileID;
+
+$results_jobs = mysqli_query($conn, $sql_jobs);
+if(!$results){
+    exit("SQL Error: " . mysqli_error($conn));
+}
+
 ?>
 
 @extends('layouts.master')
@@ -14,14 +41,14 @@
 @section('content')
 
 
-<div id="prof-comp-hero" class="parallax-window" data-parallax="scroll" data-image-src="../img/campcenter.jpg">
+<div id="profhero" style="display: flex;" class="parallax-window" data-parallax="scroll" data-image-src="../img/genericbanner.jpg">
   <div id="complogo"></div>
 </div>
 
 <div id="startchange"></div>
 
 <div id="profhead">
-	<h1>Welcome to Facebook!</h1>
+	<h1>Welcome to <?=$company['name']?>!</h1>
 </div>
 
 
@@ -32,10 +59,10 @@
 <div class="prof-comp-cont col-xs-12 col-sm-8 col-sm-push-4">
 <div class="margins">
 		<div id="comp-profborder">
-		<div id="comp-proftitle">About Facebook</div>
+		<div id="comp-proftitle">About <?=$company['name']?></div>
 			<div id="profhold">
 				<div id="comp-profinfo">
-				<p>Facebook is a social networking service and website started in February 2004. It is owned by Facebook, Inc.As of September 2012, Facebook has over one billion active users. Users may make a personal profile, add other users as friends, and send messages. Facebook users must register before using the site. Users may join user groups. These groups can be for a workplace, school or college, or other interest. The name of the service comes from the name for the book given to students at the start of the school year by some universities in the United States. These books help students get to know each other better. Facebook allows any users who say they are at least 13 years old to become users of the website.</p>
+				<p><?=$company['companyDescription']?></p>
         </div>
         <!-- <div id="profimg"></div>-->        
 			</div>
@@ -45,8 +72,26 @@
     <div id="comp-profborder">
     <div id="comp-proftitle">Positions</div>
       <div id="profhold">
-        <div id="comp-profinfo">
-        </div>
+        <div id="comp-profinfo"><br>
+
+  <?php while ($row = mysqli_fetch_array($results_jobs)): ?>
+
+  <div class="col-lg-offset-0 col-lg-4 col-md-5 col-sm-12 col-xs-12">
+  <div class="jobcont">
+      <hr>
+        <a  href="jobs?jobID=<?=$row['jobID']?>">
+    <div id="jobinfo">
+      <div id="infotitle"><?=$row['title']?></div>
+      <div id="infolocation"><?=$row['location']?></div>
+    </div>
+    <div id="jobimg"></div>   </a>
+
+    </div>
+  </div>
+
+  <?php endwhile; ?>
+
+        </div> <div style="clear:both;"></div>
         <!-- <div id="profimg"></div>-->        
       </div>
     </div>
@@ -59,7 +104,7 @@
 
 <div id="sidefavs">
 
-<h3 style="text-align:center; padding: 10px;">Meet USC Alumni from Facebook</h3>
+<h3 style="text-align:center; padding: 10px;">Meet USC Alumni from <?=$company['name']?></h3>
 
 <hr>
   
@@ -86,8 +131,6 @@
 </div>
 
 </div>
-
-
     
 @endsection
 

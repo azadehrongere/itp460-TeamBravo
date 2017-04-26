@@ -39,8 +39,8 @@
 
    <div class="col-md-5 col-sm-offset-1 col-xs-10">
       
-  <label for="jobTitle">Job Title</label>
-    <input type="text" class="form-control" name="jobTitle" id="jobTitle" required>
+  <label for="title">Job Title</label>
+    <input type="text" class="form-control" name="title" id="title" required>
     <br>
 
     <label for="exampleInputFile">Cover Photo</label>
@@ -56,10 +56,10 @@
 
   <div id="right" class="col-md-5 col-xs-10">
        <label for="exampleTextarea">Role Description</label>
-    <textarea class="form-control" name="Description" id="exampleTextarea" rows="4" placeholder="Write the job summary, salary, etc. here" required></textarea>
+    <textarea class="form-control" name="description" id="exampleTextarea" rows="4" placeholder="Write the job summary, salary, etc. here" required></textarea>
     <br>
       <label for="exampleTextarea">Role Requirements</label>
-    <textarea class="form-control" name="Requirement" id="exampleTextarea" rows="4" placeholder="Write the job preferred majors, required experience, etc. here" required></textarea>
+    <textarea class="form-control" name="requirements" id="exampleTextarea" rows="4" placeholder="Write the job preferred majors, required experience, etc. here" required></textarea>
     <br>
   <br><br>
   </div>
@@ -72,9 +72,9 @@
       <!--<option value="Entry Level">Entry Level</option>
       <option value="Mid-Level">Mid-Level</option>
       <option value="Senior Level">Senior Level</option>-->
-      <option value="Unpaid">Unpaid</option>
-      <option value="Paid">Paid</option>
-      <option value="School-credit">School credit</option>
+      <option value="2">Unpaid</option>
+      <option value="1">Paid</option>
+      <option value="3">School credit</option>
     </select>
     <br>
       <label for="jobLevel">Commitment Level</label>
@@ -82,9 +82,9 @@
       <!--<option value="Entry Level">Entry Level</option>
       <option value="Mid-Level">Mid-Level</option>
       <option value="Senior Level">Senior Level</option>-->
-      <option value="Full-time">Full Time</option>
-      <option value="Internship">Internship</option>
-      <option value="Part-time">Part-time</option>
+      <option value="1">Full Time</option>
+      <option value="3">Internship</option>
+      <option value="2">Part-time</option>
       <option>Any</option>
     </select>
   </div>
@@ -92,19 +92,20 @@
 <div id="right" class="col-md-5 col-xs-10">
        <label for="companySize">Company Size</label>
     <select class="form-control" name="size" id="companySize">
-      <option value="100">1-100 employees</option>
-      <option value="1000">100-1,000 employees</option>
-      <option value="5000">1,0000-5,0000 employees</option>
-      <option value="10000">>5,000 employees</option>
+      <option value="1">1-100 employees</option>
+      <option value="2">100-1,000 employees</option>
+      <option value="3">1,0000-5,0000 employees</option>
+      <option value="4">>5,000 employees</option>
     </select>
     <br>
     <label for="field">Field</label>
     <select class="form-control" name="category" id="field">
-      <option value="Engineering">Engineering</option>
-      <option value="Marketing">Marketing</option>
-      <option value="Finance">Finance</option>
-      <option value="Business">Business</option>
-      <option value="Technology">Technology</option>
+      <option value="1">Engineering</option>
+      <option value="3">Marketing</option>
+      <option value="2">Finance</option>
+      <option value="4">Design</option>
+      <option value="6">Business</option>
+      <option value="5">Technology</option>
     </select> 
   <br><br><br>
   </div>

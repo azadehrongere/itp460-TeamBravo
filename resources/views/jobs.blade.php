@@ -30,7 +30,7 @@ $job = mysqli_fetch_array($results);
 
 @section('content')
 
-<div id="prof-comp-hero">
+<div id="profhero" style="display: flex;" class="parallax-window" data-parallax="scroll" data-image-src="../img/genericbanner.jpg">
   <div id="complogo"></div>
 </div>
 
@@ -55,7 +55,7 @@ $job = mysqli_fetch_array($results);
 
         <p>It’s customary to send resume and CV to hiring manager.</p>
         <h4>Requirements</h4>
-        <p>This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. This is placeholder text. </p>
+        <p><?=$job['requirements']?></p>
         </div>
         <!-- <div id="profimg"></div>-->        
 			</div>

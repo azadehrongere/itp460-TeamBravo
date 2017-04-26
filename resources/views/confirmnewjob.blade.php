@@ -22,7 +22,7 @@
 </div>
 
 <div style="width:30%; margin: auto">
-	<a href="login" type="submit" class="btn btn-primary"> View your posted job!</a>
+	<a href="jobs?jobID={{$jobID}}" type="submit" class="btn btn-primary"> View your posted job!</a>
 </div>
 
 <br><br>
@@ -30,10 +30,11 @@
 	<div class="col-sm-3 col-sm-offset-2">
 		<p class="subject"><strong>Job Title: </strong>{{ $title }}</p>
 		<p class="subject"><strong>Size: </strong>{{ $size }}</p> 
-		<p class="subject"><strong>Level: </strong>{{ $category }}</p>
+		<p class="subject"><strong>Level: </strong>{{ $level }}</p>
+		<p class="subject"><strong>Category: </strong>{{ $category }}</p>
 		<p class="subject"><strong>Compensation: </strong>{{ $compensation }}</p>
 		<p class="subject"><strong>Picture: </strong>{{ $picture }}</p>
-
+		<p class="subject"><strong>Location: </strong>{{ $location }}</p>
 	</div>
 
 	<div class="col-sm-3">
@@ -49,14 +50,6 @@
 </div>
 
 <br>
- <div style="width:20%; margin:auto;">
- <form action="newjob">
- 	@for ($i = 0; $i <= 9; $i++)
-        <input type="hidden" value="{{ $title }}"></option>
-    @endfor
- </form>
-</div>
-
 <br><br>
 
 

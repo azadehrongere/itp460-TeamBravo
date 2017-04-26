@@ -195,17 +195,6 @@ if(!$results_location){
 
 </div>
 
-
-<script type="text/javascript">
-  function diffImage(img) 
-{
-   if(img.src.match(/fighton_yellow/)) img.src = "../img/fighton_red.png";
-   else img.src = "../img/fighton_yellow.png";
-}
-
-</script>
-
-
 <hr>
 
 <div class="container-fluid" id="homemain">
@@ -225,7 +214,7 @@ if(!$results_location){
       <div id="infolocation"><?=$row['location']?></div>
     </div>
     <div id="jobimg"></div>    </a>
-    <img src="../img/fighton_red.png" id="image1" style ="margin-top: 10px" align="right" class ="pointer" height="40" width="40" onclick=diffImage(this)></img>
+    <img src="../img/fighton_red.png" id="<?=$row['jobID']?>" style ="margin-top: 10px; position: relative; bottom: 53px;" align="right" class ="pointer" height="40" width="40" onclick=addFavorite(this)></img>
 
     </div>
   </div>
@@ -234,7 +223,7 @@ if(!$results_location){
 
   </div>
 
-  <div class="row">
+  <div class="row" style="text-align:center;">
 
 <?php
 
@@ -285,5 +274,32 @@ echo '</ul>';
 <br>
 <br>
 
+
+
+
+<script type="text/javascript">
+  function addFavorite(img) 
+{ 
+   if(img.src.match(/fighton_yellow/)){
+    img.src = "../img/fighton_red.png";
+    // remove favorite if clicked again!!!
+   } 
+   else{ 
+     $.ajax({
+        url: 'addFavorite',
+        type: 'post',
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+        data: {'id': img.id , 'X-CSRF-TOKEN': $('meta[id="_token"]').attr('content')},
+        success: function(data){
+          img.src = "../img/fighton_yellow.png";
+        }
+     }); 
+   }            
+   
+
+}
+
+
+</script>
 
 @endsection

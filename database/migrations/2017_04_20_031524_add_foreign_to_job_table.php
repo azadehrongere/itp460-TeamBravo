@@ -38,7 +38,7 @@ class AddForeignToJobTable extends Migration
      */
     public function down()
     {
-            Schema::table('job', function(Blueprint $table){
+        Schema::table('job', function(Blueprint $table){
             $table->dropForeign(['foreign_companyID']);
             $table->dropColumn('foreign_companyID');
             $table->dropForeign(['foreign_fieldID']);

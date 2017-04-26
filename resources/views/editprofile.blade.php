@@ -1,5 +1,57 @@
 <?php include_once (app_path().'/includes/analyticstracking.php');
 
+require (app_path().'/includes/studentsearch.php');
+
+if(empty($_GET['profileID'])) {
+$profileID = '4';
+} else {
+$profileID = $_GET['profileID'];
+$sql=$sql . " AND users.id =" . $profileID;
+}
+
+$results = mysqli_query($conn, $sql);
+if(!$results){
+    exit("SQL Error: " . mysqli_error($conn));
+}
+
+$profile = mysqli_fetch_array($results);
+
+  $sql_major = "SELECT *
+    FROM major
+    WHERE foreign_usersID=" . $profileID;
+
+  $results_major = mysqli_query($conn, $sql_major);
+  if(!$results){
+      exit("SQL Error: " . mysqli_error($conn));
+  }
+
+  $sql_minor = "SELECT *
+  FROM minor
+  WHERE foreign_usersID=" . $profileID;
+
+  $results_minor = mysqli_query($conn, $sql_minor);
+  if(!$results){
+      exit("SQL Error: " . mysqli_error($conn));
+  }
+
+  $sql_experience = "SELECT *
+  FROM experience
+  WHERE foreign_usersID=" . $profileID;
+
+  $results_experience = mysqli_query($conn, $sql_experience);
+  if(!$results){
+      exit("SQL Error: " . mysqli_error($conn));
+  }
+
+  $sql_projects = "SELECT *
+  FROM projects
+  WHERE foreign_usersID=" . $profileID;
+
+  $results_projects = mysqli_query($conn, $sql_projects);
+  if(!$results){
+      exit("SQL Error: " . mysqli_error($conn));
+  }
+
 ?>
 
 @extends('layouts.master')
@@ -21,7 +73,7 @@
 
 <br>
 
-<h1 style="text-align:center; color: #990000"><strong>Create a Profile!</strong></h1>
+<h1 style="text-align:center; color: #990000"><strong> Edit Profile!</strong></h1>
 <br><br>
 
 <div id="formContainer">
@@ -32,7 +84,7 @@
 
           
       <label for="jobTitle">Name</label>
-        <input type="jobTitle" class="form-control" id="jobTitle" required>
+        <input type="jobTitle" class="form-control" id="name" value="<?=$profile['name']?>" required>
         <br>
 
         <label for="exampleInputFile">Headshot</label>
@@ -43,9 +95,15 @@
         <br><br>
 
           <div class="newMajor">  
+
             <label for="major">Major</label>
-            <input type="major" class="form-control" id="major">
+
+          <?php while ($major = mysqli_fetch_array($results_major)): ?>
+
+            <input type="major" class="form-control" id="major<?=$major['majorID']?>" value="<?=$major['major']?>">
             <br>
+
+          <?php endwhile; ?>
 
           </div>
 
@@ -61,7 +119,8 @@
 
       
       <label for="locationSelect">Graduating Semester</label>
-        <select class="form-control" id="locationSelect">
+        <select class="form-control" id="graduatingSemester">
+        <option>Spring 2017</option>
           <option>Fall 2017</option>
           <option>Spring 2018</option>
           <option>Fall 2018</option>
@@ -76,7 +135,7 @@
         <br>
 
          <label for="locationSelect">Degree Level</label>
-        <select class="form-control" id="locationSelect">
+        <select class="form-control" id="degreeLevel">
           <option>Undergraduate</option>
           <option>Graduate</option>
         </select>
@@ -85,9 +144,15 @@
 
 
       <div class="newMinor">  
-         <label for="minor">Minor</label>
-        <input type="minor" class="form-control" id="minor">
+
+               <label for="minor">Minor</label>
+
+      <?php while ($minor = mysqli_fetch_array($results_minor)): ?>
+
+        <input type="minor" class="form-control" id="minor<?=$minor['minorID']?>" value="<?=$minor['minor']?>">
         <br>
+
+      <?php endwhile; ?>
 
       </div>
 
@@ -116,19 +181,25 @@
 <br>
 
 <div id="formContainer">
+
+
+
         <div class="newExperience"> 
+
+<?php while ($experience = mysqli_fetch_array($results_experience)): ?>
+
   <div class="row">
     <div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">   
       <label for="jobName">Title</label>
-        <input type="jobName" class="form-control" id="jobName">
+        <input type="jobName" class="form-control" id="jobName<?=$experience['experienceID']?>" value="<?=$experience['title']?>">
         <br>
 
         <label for="companyName">Company</label>
-        <input type="companyName" class="form-control" id="companyName">
+        <input type="companyName" class="form-control" id="companyName<?=$experience['experienceID']?>" value="<?=$experience['company']?>">
         <br>
 
         <label for="locationName">Location</label>
-        <input type="locationName" class="form-control" id="locationName">
+        <input type="locationName" class="form-control" id="locationName<?=$experience['experienceID']?>" value="<?=$experience['location']?>">
         <br>
 
 
@@ -139,11 +210,11 @@
     <div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">
       <br><br>
       <label for="startDate"> Start Date: </label>
-        <input type="date" name="startDate">
+        <input type="text" name="startDate" placeholder="YYYY-MM-DD" id="startDate<?=$experience['experienceID']?>" value="<?=$experience['startDate']?>">
       <br><br><br><br><br>
 
       <label for="endDate">End Date:</label>
-        <input type="date" name="endDate">
+        <input type="text" name="endDate" placeholder="YYYY-MM-DD" id="endDate<?=$experience['experienceID']?>" value="<?=$experience['endDate']?>">
       <br>
 
       </div>
@@ -152,12 +223,15 @@
     <div class="col-md-10 col-xs-offset-1 col-md-offset-1 col-xs-10 col-lg-offset-1 col-lg-10">
 
         <label for="experienceDescription">Describe your Experience</label>
-        <textarea class="form-control" id="companyDescription" rows="7" placeholder="Write about your experiences, responsibilities, projects, etc."></textarea>
+        <textarea class="form-control" id="companyDescription" rows="7" placeholder="Write about your experiences, responsibilities, projects, etc."><?=$experience['description']?></textarea>
 
          
 
     </div>
-  </div>
+  </div><br><br>
+
+<?php endwhile; ?>
+
 </div>
 
 <div class="row">
@@ -180,15 +254,18 @@
 
 <div id="formContainer">
         <div class="newProject"> 
+
+<?php while ($projects = mysqli_fetch_array($results_projects)): ?>
+
   <div class="row">
     <div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">   
       <label for="projectName">Title</label>
-        <input type="projectName" class="form-control" id="projectName">
+        <input type="projectName" class="form-control" id="projectName<?=$projects['projectsID']?>" value="<?=$projects['title']?>">
         <br>
       </div>
       <div class="col-md-5 col-xs-10">  
         <label for="projectLink">Link</label>
-        <input type="projectLink" class="form-control" id="projectLink">
+        <input type="projectLink" class="form-control" id="projectLink<?=$projects['projectsID']?>" value="<?=$projects['link']?>">
         <br>
 
       </div>
@@ -197,12 +274,15 @@
     <div class="col-md-10 col-xs-offset-1 col-md-offset-1 col-xs-10 col-lg-offset-1 col-lg-10">
 
         <label for="projectDescription">Describe your Project</label>
-        <textarea class="form-control" id="projectDescription" rows="7" placeholder="Write about your role and experience in the project"></textarea>
+        <textarea class="form-control" id="projectDescription<?=$projects['projectsID']?>" rows="7" placeholder="Write about your role and experience in the project"><?=$projects['description']?></textarea>
 
          
 <br>
     </div>
   </div>
+
+<?php endwhile;?>
+
 </div>
 </div>
 
@@ -226,7 +306,6 @@
   function addMajor(argument) {
      var NumberOfMajors = 2;
      var html = '<div class="brandNewMajor" style="display:none;"" >';
-     html += '<label for="major">Major</label>';
      html += '<input type="text" name="major[major'+NumberOfMajors+'][major]" class="form-control" id="major"><br>';
      html+= "</div>";
      console.log(html);
@@ -244,7 +323,6 @@
   function addMinor(argument) {
      var NumberOfMinors = 2;
      var html = '<div class="brandNewMinor" style="display:none;"" >';
-     html += '<label for="minor">Minor</label>';
      html += '<input type="text" name="minor[minor'+NumberOfMinors+'][minor]" class="form-control" id="minor"><br>';
      html+= "</div>";
      console.log(html);
@@ -278,10 +356,10 @@
       html += '<div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">';
       html += '<br><br>';
       html += '<label for="startDate"> Start Date: </label>';
-      html += '<input name="startDate[startDate'+NumberOfExperiences+'][startDate]" type="date" name="startDate">';
+      html += '<input name="startDate[startDate'+NumberOfExperiences+'][startDate]" type="text" name="startDate" placeholder="YYYY-MM-DD">';
       html += '<br><br><br><br><br>';
       html += '<label for="endDate">End Date:</label>';
-      html += '<input name="endDate[endDate'+NumberOfExperiences+'][endDate]" type="date" name="endDate">';
+      html += '<input name="endDate[endDate'+NumberOfExperiences+'][endDate]" type="text" name="endDate" placeholder="YYYY-MM-DD">';
       html += '<br>';
       html += '</div>';
       html += '</div>';

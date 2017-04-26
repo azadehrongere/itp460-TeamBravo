@@ -26,4 +26,9 @@ class MasterController extends Controller{
         Storage::disk('s3')->put('images/test', $image->__toString());
     	return $img->response();
     }
+    public function addFavorite(Request $request)
+    {
+        $data = $request->all();
+        return $data['id'];
+    }
 }
