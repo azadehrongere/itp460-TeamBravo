@@ -100,22 +100,52 @@
 
 <body>
 
+    <div style="position: absolute; padding-top: 150px; padding-left: 150px; font-size: 100px; color: #ffffff; text-shadow: 2px 2px #000000;">Welcome!</div>
+
     <img id="logo" src="img/logo.png" height="40px;">
     
 <div id="loginbg">
 
 <div id="loginsmall">
 
-	<div id="logintxt">
-		<h1>Welcome!</h1>
-	</div>
     <br>
 
-<div id="loginLinkedIn" style="padding-left:130px;" >
+    <div style="text-align: center; padding-top: 50px; font-size: 25px; color: #ffffff; "><strong>For Students</strong></div><br>
+
+<div id="loginLinkedIn" style="padding-left:230px;" >
+
+
 <script type="in/Login"></script>
+</div> <br>
+<button type="submit" style="width: 200px; display: block; margin: 0 auto;"onclick="location.href='/jobs'" class="btn btn-primary" value="Submit">Browse Our Jobs</button>
+<br>
+<hr>
+<br><br>
+
+    <div style="text-align: center; font-size: 25px; color: #ffffff"><strong>For Employers</strong></div><br>
+
+<form style="padding-left: 60px;" id="companyLogin" method="post" action="">
+
+    <label style="color: #ffffff;" for="username">Username</label>
+    <input style="width: 500px;"type="text" class="form-control" id="username" placeholder="Enter Username" required>
+    <br>
+
+    <label style="color: #ffffff;" for="password">Password</label>
+    <input style="width: 500px;" type="text" class="form-control" id="password" placeholder="Enter Password" required>
+    <br>
+
+ <div style="width:30%;">
+  <button type="submit" form="companyLogin" class="btn btn-primary" value="Submit">Submit</button>
 </div>
-    <div style="text-align:center;  text-decoration: underline">
-        <a href="/newcompany">Or Register Your Company</a>
+
+</form>
+
+<br><br>
+
+<button type="submit" style="width: 200px; display: block; margin: 0 auto;"onclick="location.href='/newcompany'" class="btn btn-primary" value="Submit">Or Register Your Company</button>
+<br>
+
+
 </div>
 
 </div>

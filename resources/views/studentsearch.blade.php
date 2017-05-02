@@ -137,6 +137,8 @@ if(!$results_location){
   <br>
   <div class="form-group col-sm-offset-3 col-sm-6">
     <input type="text" class="form-control" placeholder="Search for names or titles" id="search" name="search" value="<?=$search?>">
+          <a href="studentsearch" style="position:relative;left:650px;top:-25px;color:#990000">Clear Filters</a>
+
   </div>
 </form>
 </div>

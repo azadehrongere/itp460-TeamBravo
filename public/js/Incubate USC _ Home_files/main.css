@@ -351,3 +351,7 @@ div > p {
 hr {
 	margin: 0;
 }
+
+.homeFilter{
+	height: 100px;
+}

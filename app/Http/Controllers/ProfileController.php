@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     //
-	public function editProfile(Request $request)
+	public function submitedits(Request $request)
 	{
 		# code...
 		$data = $request->all();

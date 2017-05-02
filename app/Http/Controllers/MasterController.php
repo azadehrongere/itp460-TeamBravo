@@ -11,11 +11,24 @@ use Intervention\Image\ImageManager;
 
 class MasterController extends Controller{
 
-    public function SuccessfulLogin(Request $request, $firstName, $lastName, $headline){
-    	//$sql_location = "SELECT * FROM users"; 
-    	$data = array('first' => $firstName, 'last' => $lastName,'headline' => $headline);
-		//return \View::make('home');
-		return Redirect('home');
+    public function submitnewcompany(Request $request){
+        $data = $request->all();
+        dd($data);
+        $userID = DB::table('users')->insertGetId(
+            ['title' => $data['title'],
+            'description' => $data['description'],
+            'requirements' => $data['requirements'],
+            'location' => $data['title'],
+            'foreign_companyID' => 1,
+            'foreign_fieldID' => $data['category'],
+            'foreign_levelID' => $data['jobLevel'],
+            'foreign_sizeID' => $data['size'],
+            'foreign_jobPayID' => $data['compensation'],
+            ]
+
+        );
+        $photo = Image::make(Storage::disk('s3')->get('coverPhotos/default.jpg'));
+        return $photo->response();
     }
 
     public function test2(Request $request)

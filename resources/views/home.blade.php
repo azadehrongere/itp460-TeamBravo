@@ -123,10 +123,22 @@ if(!$results_location){
 <div id="startchange"></div>
 </div>
 
+<div  style='text-align: center; color: #A21010; font-size: 350%; padding-top:10px;'>
+    
 
-<div  style="text-align: center; color: #A21010; font-size: 350%; padding-top:10px;">
-  <strong>Search for Your Early Stage Employer</strong>
+<?php
+
+if(Session::get('company') == true){
+echo "<strong>View the Current Job Listings</strong><br><a href='newjob'><button class='btn btn-primary' type='button' style='width: 200px; margin-top: 12px; margin-bottom: 14px'> Add Job </button></a>";
+} else {
+echo "<strong>Search for Your Early Stage Employer</strong>";
+}
+
+?>
+
 </div>
+
+
 
 <div id="searchcont" class="row">
 
@@ -145,7 +157,7 @@ if(!$results_location){
 <div class="container">
 <div class="row row-centered">
 
-<div class="dropdown col-md-offset-3 col-md-2 col-xs-4">
+<div class="dropdown col-md-offset-3 col-md-2 col-xs-4 homeFilter">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownLevel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
     Job Level
@@ -161,7 +173,7 @@ if(!$results_location){
   </ul>
 </div>
 
-<div class="dropdown col-md-2 col-xs-4">
+<div class="dropdown col-md-2 col-xs-4 homeFilter">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Company Size
     <span class="caret"></span>
@@ -175,7 +187,7 @@ if(!$results_location){
   </ul>
 </div>
 
-<div class="dropdown col-md-2 col-xs-4">
+<div class="dropdown col-md-2 col-xs-4 homeFilter">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownField" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Field of interest
     <span class="caret"></span>
@@ -187,6 +199,8 @@ if(!$results_location){
 
     <?php endwhile; ?>
   </ul>
+
+      <a href="home" style="position:relative;left:150px;top:-25px;color:#990000">Clear Filters</a>
 
 </div>
 
@@ -206,7 +220,7 @@ if(!$results_location){
 
   <div class="col-lg-offset-0 col-lg-4 col-md-5 col-sm-12 col-xs-12">
   <div class="jobcont">
-      <div id="jobtitle"><?=$row['name']?></div>
+      <a href="company-profile?profileID=<?=$row['id']?>"><div id="jobtitle"><?=$row['name']?></div></a>
       <hr>
         <a  href="jobs?jobID=<?=$row['jobID']?>">
     <div id="jobinfo">

@@ -2,12 +2,18 @@
 
 require (app_path().'/includes/studentsearch.php');
 
-if(empty($_GET['profileID'])) {
-$profileID = '4';
-} else {
+if(Session::get('company') == true && (empty($_GET['profileID']))) {
+  header('Location: home');
+  exit;
+} elseif (Session::get('company') == true && (!empty($_GET['profileID']))) {
+
+} elseif(empty($_GET['profileID']) || $_GET['profileID'] != Session::get('id')) {
+    header('Location: profile?profileID=' . Session::get('id'));
+    exit; 
+}
+
 $profileID = $_GET['profileID'];
 $sql=$sql . " AND users.id =" . $profileID;
-}
 
 $results = mysqli_query($conn, $sql);
 if(!$results){
@@ -90,10 +96,19 @@ $profile = mysqli_fetch_array($results);
 <div id="startchange" class="container-fluid">
   <div class="row" style="font-size:16px">
     <div id="test" class="prof-comp-cont col-xs-12 col-sm-8 col-sm-push-4" style="margin-top: 20px">
-      <a href="editprofile/<?=$profile['id']?>">
-      <button class="btn btn-primary" type="submit" style="width: 200px; float: right; margin-top: 12px; margin-bottom: 14px">
-        Edit Profile
-        </button></a>
+      
+      <a href="editprofile?profileID=<?=$profile['id']?>">
+
+<?php 
+
+if($_GET['profileID'] == Session::get('id')){
+echo "<button class='btn btn-primary' type='submit' style='width: 200px; float: right; margin-top: 12px; margin-bottom: 14px'> Edit Profile </button>";
+} 
+
+?>
+
+        </a>
+
       <div >
         <div id="studentProfile" style="clear: both; background-color: white;">
 

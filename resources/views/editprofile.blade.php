@@ -2,12 +2,13 @@
 
 require (app_path().'/includes/studentsearch.php');
 
-if(empty($_GET['profileID'])) {
-$profileID = '4';
-} else {
+if(empty($_GET['profileID']) || $_GET['profileID'] != Session::get('id')) {
+    header('Location: editprofile?profileID=' . Session::get('id'));
+    exit; 
+}
+
 $profileID = $_GET['profileID'];
 $sql=$sql . " AND users.id =" . $profileID;
-}
 
 $results = mysqli_query($conn, $sql);
 if(!$results){
@@ -78,7 +79,7 @@ $profile = mysqli_fetch_array($results);
 
 <div id="formContainer">
 
-<form id="newstudent" action="confirmnewstudent" method="get">
+<form id="jobForm" action="submitedits" method="post">
   <div class="row">
        <div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">
 
@@ -210,11 +211,11 @@ $profile = mysqli_fetch_array($results);
     <div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">
       <br><br>
       <label for="startDate"> Start Date: </label>
-        <input type="text" name="startDate" placeholder="YYYY-MM-DD" id="startDate<?=$experience['experienceID']?>" value="<?=$experience['startDate']?>">
+        <input type="date" name="startDate" placeholder="YYYY-MM-DD" id="startDate<?=$experience['experienceID']?>" value="<?=$experience['startDate']?>">
       <br><br><br><br><br>
 
       <label for="endDate">End Date:</label>
-        <input type="text" name="endDate" placeholder="YYYY-MM-DD" id="endDate<?=$experience['experienceID']?>" value="<?=$experience['endDate']?>">
+        <input type="date" name="endDate" placeholder="YYYY-MM-DD" id="endDate<?=$experience['experienceID']?>" value="<?=$experience['endDate']?>">
       <br>
 
       </div>
@@ -306,7 +307,7 @@ $profile = mysqli_fetch_array($results);
   function addMajor(argument) {
      var NumberOfMajors = 2;
      var html = '<div class="brandNewMajor" style="display:none;"" >';
-     html += '<input type="text" name="major[major'+NumberOfMajors+'][major]" class="form-control" id="major"><br>';
+     html += '<input type="text" name="major[]" class="form-control" id="major"><br>';
      html+= "</div>";
      console.log(html);
      
@@ -354,12 +355,12 @@ $profile = mysqli_fetch_array($results);
       html += '<br><br>';
       html += '</div>';
       html += '<div class="col-md-5 col-md-offset-1 col-xs-offset-1 col-xs-10">';
-      html += '<br><br>';
+      html += '<br><br><br><br><br>';
       html += '<label for="startDate"> Start Date: </label>';
-      html += '<input name="startDate[startDate'+NumberOfExperiences+'][startDate]" type="text" name="startDate" placeholder="YYYY-MM-DD">';
+      html += '<input name="startDate[startDate'+NumberOfExperiences+'][startDate]" type="date" name="startDate" placeholder="YYYY-MM-DD">';
       html += '<br><br><br><br><br>';
       html += '<label for="endDate">End Date:</label>';
-      html += '<input name="endDate[endDate'+NumberOfExperiences+'][endDate]" type="text" name="endDate" placeholder="YYYY-MM-DD">';
+      html += '<input name="endDate[endDate'+NumberOfExperiences+'][endDate]" type="date" name="endDate" placeholder="YYYY-MM-DD">';
       html += '<br>';
       html += '</div>';
       html += '</div>';
@@ -413,8 +414,8 @@ $profile = mysqli_fetch_array($results);
 
 
 
-
- 
+<br>
+   <input type="hidden" name="_token" value="{{ csrf_token() }}">
  <div style="width:30%; margin: auto">
   <button type="submit" form="jobForm" class="btn btn-primary" value="Submit">Submit</button>
 </form>

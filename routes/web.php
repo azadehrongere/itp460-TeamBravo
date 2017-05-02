@@ -46,12 +46,14 @@ Route::get('newcompany', function (){
     return view('newcompany');
 });
 
-Route::get('confirmnewcompany', function (){
-    return view('confirmnewcompany');
-});
+Route::post('submitnewcompany', 'MasterController@submitnewcompany');
 
 Route::get('confirmnewjob', function (){
-    return view('confirmnewjob');
+    if(Session::get('company') == true){
+        return view('confirmnewjob');
+    }else{
+        return Redirect('home');
+    }
 });
 
 Route::get('nav', function (){
@@ -59,7 +61,11 @@ Route::get('nav', function (){
 });
 
 Route::get('studentsearch', function(){
-    return view('studentsearch');
+    if(Session::get('company') == true){
+        return view('studentsearch');
+    }else{
+        return Redirect('home');
+    }
 });
 
 Route::get('test', function(){
@@ -74,7 +80,9 @@ Route::get('phpinfo', function(){
     return phpinfo();
 });
 
-
+Route::get('404', function(){
+    return '404'();
+});
 
 Route::get('test2', 'MasterController@test2');
 
@@ -84,14 +92,17 @@ Route::post('submitnewjob', 'NewController@SubmitNewJob');
 
 Route::post('addFavorite', 'MasterController@addFavorite');
 
-Route::get('editProfile/{id}', 'ProfileController@editProfile');
+Route::post('submitedits', 'ProfileController@submitedits');
+
+Route::get('editprofile', function(){
+    if(Session::get('signedIn') == true){
+        return view('editprofile');
+    }else{
+        return Redirect('home');
+    }
+});
 
 Route::get('linkedinAuth/{firstName}/{lastName}/{headline}/{url}', 'LinkedInSuccessController@SuccessfulLogin');
-
-
-
-
-
 
 
 

@@ -1,4 +1,3 @@
-
 body {
   background-color: #EDEDED;
   width: 100%;
@@ -12,10 +11,19 @@ body {
   width: 100%;
   height: 100%;
   float: left;
-  background: url("../img/tommy.jpg");
+  background: url("../img/welcomephoto.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; }
+  background-position: center; 
+}
+
+.homeFilter{
+  height: 42px;
+}
+
+div.homeFilter ul{
+  margin-left: 15px;
+}
 
 #logincont {
   width: 50%;
@@ -324,17 +332,13 @@ a:hover {
   #loginsmall {
   background-repeat: no-repeat;
   background-size: contain;
-  background-color:#cccccc;
-  opacity: .75;
-  height: 250px;
-  width: 400px;
-  margin-left: 30px; 
-margin-top: 200px; }
-
-  #loginsmall:hover {
-
   background-color:#666666;
+  opacity: .95;
+  height: 100%;
+  width: 600px;
+  float: right;
 }
+
 
 #alumnisearch {
   margin: auto;
@@ -487,10 +491,16 @@ margin-top: 200px; }
     font-size: 20px;
 
   }
+.companylink{
 
+  color:black; 
+  text-align:center;  
+  text-decoration: underline;
+}
+.companylink:hover{
 
-
-
-  }
+  color: white;
+}
+}
 
 /*# sourceMappingURL=main.css.map */

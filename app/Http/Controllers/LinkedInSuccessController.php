@@ -28,7 +28,7 @@ class LinkedInSuccessController extends Controller{
 
 		session(['name' => $firstName]);
 		session(['signedIn' => true]);
-		session(['company' => false]); # designate if the current user is a company
+		session(['company' => true]); # designate if the current user is a company
 		session(['id' => $userID]);
 
 
